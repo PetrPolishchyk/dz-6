@@ -41,6 +41,7 @@ public class Main {
                 mySet.add(character);
             }
         }
+        //print the list of unique letters
         System.out.println(mySet);
     }
 
