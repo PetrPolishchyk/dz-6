@@ -5,7 +5,7 @@ import static java.lang.Integer.sum;
 public class Main {
     public static void main(String[] args) {
         //get the string array
-        String [] theArrayOfWords = new String[] {"mama", "papa", "eat", "hedgehog", "jell"};
+        String [] theArrayOfWords = new String[] {"mamamamazyzyzyzy", "mamad", "papa", "eat", "hedgehog", "jell", "dada"};
         getTheResult(theArrayOfWords);
     }
 
@@ -26,12 +26,11 @@ public class Main {
                     myMap.put(character, 1);
                 }
             }
-
-            Collection<Integer> valuesOfTheMap = myMap.values();
-            int sumOfAllValues = sumOfMapValues(valuesOfTheMap);
-            int mapSize = myMap.size();
-            if (sumOfAllValues % 2 == 0 && sumOfAllValues / mapSize == 2){
-                myList.add(word);
+            boolean isAllLettersEvenInWord = myMap.values().stream().allMatch(value -> value % 2 == 0);
+            if (isAllLettersEvenInWord){
+                if (myList.size() < 2){
+                    myList.add(word);
+                }
             }
         }
 
@@ -43,14 +42,4 @@ public class Main {
         }
         System.out.println(mySet);
     }
-
-    private static int sumOfMapValues(Collection<Integer> valueSet) {
-        int sum = 0;
-        for (Integer values : valueSet){
-            sum = sum + values;
-        }
-        return sum;
-    }
-
-
 }
